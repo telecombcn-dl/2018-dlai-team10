@@ -1,5 +1,10 @@
-Tasques per 12/11/2018:
+Tasques 05/11/2018:
 	- Familiaritzar-se amb el dataset de quickdraw:
 		- Baixar-nos el dataset a un colab
 		- Experimentar amb el dataset: visualitzar imatges amb el numpy + matplotlib
 	- Veure si és factible utilitzar el colab en comptes de google cloud per el temps de descàrrega del dataset.
+Update  12/11/2018:
+	- Podriem provar amb diferents coses: 	1. MLP
+					      	2. CNN
+						3. RNN
+	- Fer més petit el dataset, hi ha masses classes, podriem començar amb 10 classes.
