@@ -11,4 +11,12 @@ Update  12/11/2018 (conversa amb Noe):
 	- Fer més petit el dataset, hi ha masses classes, podriem començar amb 10 classes.
 	- Començar fent servir Google Colab un cop tinguem el dataset disminuit. Quan ja haguem realitzat els primers passos i treballem (si volem) amb tot o una gran part del dataset, ja farem servir Google Cloud 
 	Per baixar coses al google cloud: curl -L -o myfile.xls "https://drive.google.com/uc?export=download&id=0B4fk8L6brI_eX1U5Ui1Lb1FpVG8"
+
+Tasques: 
+	Carles i Marina: 	Baixar-se els numpys per les 10 classes que vem dir.
+				Fer un colab que carregui els les 10 classes i faci les particions de test, validation i train per a cada 				  classe.
+			        Fer tutorials github i pytorch.
+	Carles: 		MLP
+	Marina:			CNN
+	Ponç 			RNN
 	
