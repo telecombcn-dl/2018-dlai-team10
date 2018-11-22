@@ -30,6 +30,3 @@ for elem in x:
 plt.subplot(212)
 plt.imshow(img)
 plt.show()
-
-# En realitat l'ordre importa, no fa falta que li passis les linies perque la xarxa (en principi una LSTM) hauria de ser capaç 
-# d'interpretar com els pixels tot i que no sap que son pixels
