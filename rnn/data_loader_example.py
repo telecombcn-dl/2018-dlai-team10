@@ -5,7 +5,7 @@ import torch.utils.data
 import torchvision.datasets as datasets
 import torch.nn as nn
 from torch.nn import functional as F
-
+import torch.optim as optim
 """
 
 	train    ---- apple  --- apple_0npy, apple_1.npy, ..., apple_17273.npy
@@ -40,8 +40,11 @@ class Quick_draw_LSTM(nn.Module):
 		self.hidden_to_class = nn.Linear(self.lstm_hidden_units, self.output_dim)
 
 	def init_hidden(self):
-		hidden_a = torch.randn(self.lstm_units, self.batch_size, self.lstm_hidden_units)
-		hidden_b = torch.randn(self.lstm_units, self.batch_size, self.lstm_hidden_units)
+		# hidden_a = torch.randn(self.lstm_units, self.batch_size, self.lstm_hidden_units)
+		# hidden_b = torch.randn(self.lstm_units, self.batch_size, self.lstm_hidden_units)
+		hidden_a = torch.zeros(self.lstm_units, self.batch_size, self.lstm_hidden_units)
+		hidden_b = torch.zeros(self.lstm_units, self.batch_size, self.lstm_hidden_units)
+		
 		return (hidden_a, hidden_b)
 
 	def forward(self, X, X_lengths):
@@ -54,7 +57,7 @@ class Quick_draw_LSTM(nn.Module):
 		X = nn.utils.rnn.pack_padded_sequence(X, X_lengths)
 		X, self.hidden = self.lstm(X, self.hidden)
 		X = nn.utils.rnn.pad_packed_sequence(X)
-		print("El tipus de X[0] és: " +str(type(X[0])))
+		#print("El tipus de X[0] és: " +str(type(X[0]))) --> torch.Tensor
 		
 		X = X[0].contiguous()
 		X = X.view(-1, X.shape[2])
@@ -100,7 +103,6 @@ class PadCollate:
 		"""
 		# find longest sequence
 		lengths = np.flip(np.sort([x[0].shape[self.dim] for x in batch]), axis = 0)
-		print(lengths)
 		max_len = max(map(lambda x: x[0].shape[self.dim], batch))
 		batch = list(map(lambda x: (pad_tensor(x[0], my_pad=max_len, my_dim=self.dim), x[1]), batch))
 		# stack all
@@ -111,17 +113,19 @@ class PadCollate:
 	def __call__(self, batch):
 		return self.pad_collate(batch)
 
-
 def load_sample(x):
 	# We load them in format N x 2 in order to stack them in proper order
 	return torch.from_numpy(np.load(x).T).double()
+
+
+batch_size = 16
 
 train_dir = r"C:\Users\user\Ponç\MET\DLAI\Project\data\simplified_strokes_npy\train"
 val_dir = r"C:\Users\user\Ponç\MET\DLAI\Project\data\simplified_strokes_npy\validation"
 test_dir = r"C:\Users\user\Ponç\MET\DLAI\Project\data\simplified_strokes_npy\test"
 
 train_dataset = datasets.DatasetFolder(train_dir, extensions = ['.npy'], loader = load_sample)
-train_loader = torch.utils.data.DataLoader(train_dataset, batch_size = 8, shuffle = True, num_workers = 0, collate_fn = PadCollate(dim=0))
+train_loader = torch.utils.data.DataLoader(train_dataset, batch_size = batch_size, shuffle = True, num_workers = 0, collate_fn = PadCollate(dim=0))
 data_iter = iter(train_loader)
 #data_iter = torch.utils.data.DataLoaderIter(train_loader)
 # El que es printa hauria de ser un batch que entra per fer el forward pass i el seu backward pass corresponent quan entrenem
@@ -132,7 +136,45 @@ print("El tamany de les labels es:")
 print(labels.size())
 
 #now sample a batch and forward propagate it through the network to see if it works
-model = Quick_draw_LSTM(2, 1, 128, 8, 10)
+model = Quick_draw_LSTM(2, 1, 128, batch_size, 10)
 X = model(samples.float(), lengths)
 print(X[:,7,:].size())
 print(X[:,7,:])
+
+
+# Hyper-parameters
+
+epochs = 40
+learning_rate = 0.007
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(model.parameters(), learning_rate, momentum = 0.9)
+for epoch in range(2):
+	print(" ############# EPOCH #################### EPOCH ######################\
+		    ####### EPOCH ################# EPOCH ########### EPOCH #############\
+		    ##### EPOCH ########## EPOCH ########### EPOCH ######################")
+	running_loss = 0.0
+	for i, data in enumerate(train_loader, 0):
+		# Sample a batch. Recall that we need the lengths for the padding and packing!
+		inputs, labels, lengths = data
+		# Zero the gradients because pytorch accumulates gradients
+		optimizer.zero_grad()
+
+		# Forward + Backward + optimize
+		outputs = model(inputs.float(), lengths)
+		#print(outputs)
+		#print("La size dels outputs es = " + str(outputs.size()))
+		#print(lengths)
+		# We take only the last output of each sequence!
+
+		valid_outputs = outputs[np.array(lengths-1), np.arange(0, batch_size), :]
+		#print("La size dels valid outputs es = " + str(valid_outputs.size()))
+		#print(valid_outputs)
+		loss = criterion(valid_outputs, labels)
+		#print(loss)
+		loss.backward()
+		optimizer.step()
+		running_loss += loss.item()
+		#print sth
+		if i % 200 == 199:
+			print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 2000))
+			running_loss = 0.0
