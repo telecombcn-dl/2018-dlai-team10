@@ -8,7 +8,7 @@ Our project consists on trying different approaches for *Kaggle's Quick, Draw! D
 
 Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI [...]
 
-However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this noisy data and perform well on a manually-labeled test set from a different distribution.
+However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this **very noisy data** and perform well on a manually-labeled test set from a different distribution.
 
 Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
 
