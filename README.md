@@ -30,6 +30,10 @@ For the first two approaches (MLP and CNN) we used the simplified dataset, in wh
 
 ## 3.2 Convolutional Neural Network
 
+### Architecture 4
+I used different...
+![cnn model 3](https://user-images.githubusercontent.com/43316350/50045304-daf09000-0090-11e9-9cd8-61c0230a3f39.JPG) 
+
 ## 3.1 Recurrent Neutal Network
 
 # 4. Conclusions
@@ -42,4 +46,5 @@ The current leader of the competition has a score of 0.95480. However, our resul
 
 
 # References
-Conclusions [...]
+
+•	Training a classifier: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py 
