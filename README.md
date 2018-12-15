@@ -30,9 +30,17 @@ For the first two approaches (MLP and CNN) we used the simplified dataset, in wh
 
 ## 3.2 Convolutional Neural Network
 
-### Architecture 4
+### Architecture 1
 I used different...
-![cnn model 3](https://user-images.githubusercontent.com/43316350/50045304-daf09000-0090-11e9-9cd8-61c0230a3f39.JPG) 
+![arquitecturacnn1](https://user-images.githubusercontent.com/43316350/50046296-bcdf5b80-00a1-11e9-8afe-7441718d35d3.JPG)
+
+### Architecture 2
+![cnn model 3](https://user-images.githubusercontent.com/43316350/50045304-daf09000-0090-11e9-9cd8-61c0230a3f39.JPG)
+)
+### Architecture 3
+![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
+
+## Experiments
 
 ## 3.1 Recurrent Neutal Network
 
