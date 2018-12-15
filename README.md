@@ -20,15 +20,28 @@ We have implemented three different models [...]
 
 # 2. The Dataset
 
+# 3. Hyperparameters
 
-# 3. Models
+## 3.1 Optimizers
+The optimizer blabla. We tried two different optimizers:
+
+
+- **Stochastic Gradient Descent (SGD)**, which blabla
+
+
+- **Adaptive Moments (ADAM)**, which is an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. 
+
+
+# 4. Models
 We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
 
 For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
 
-## 3.1 Multilayer Perceptron
+## 4.1 Multilayer Perceptron
 
-## 3.2 Convolutional Neural Network
+## 4.2 Convolutional Neural Network
+
+
 
 ### Architecture 1
 I used different...
@@ -42,9 +55,9 @@ I used different...
 
 ## Experiments
 
-## 3.1 Recurrent Neutal Network
+## 4.1 Recurrent Neutal Network
 
-# 4. Conclusions
+# 5. Conclusions
 Results [...]
 
 The evaluation of the challenge is performed according to the Mean Average Precision @ 3 (MAP@3): MAP@3=1U∑u=1U∑k=1min(n,3)P(k)
@@ -53,8 +66,8 @@ where U is the number of scored drawings in the test data, P(k) is the precision
 The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge requested. 
 
 
-# References
-
+# 6. References
+•	ADAM Optimizer:  D. P. Kingma, J. L. Ba, *'ADAM: A Method For Stochastic Optimization'*. 
 •	Training a classifier: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py 
 
 This project has been developed in Python 3.6.0 and using Google Colab Notebooks. It has been implemented in PyTorch 0.4.1
