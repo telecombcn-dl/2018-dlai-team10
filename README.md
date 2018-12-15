@@ -1,4 +1,4 @@
-# Deep Learning for Artifitial Intelligence Project - Group 10
+# Deep Learning for Artifitial Intelligence Project - *Group 10*
 ETSETB Master students: M. Alonso, M. Busquets, P. Palau, C. Pitarque
 
 # 1. Introduction 
@@ -48,3 +48,5 @@ The current leader of the competition has a score of 0.95480. However, our resul
 # References
 
 •	Training a classifier: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py 
+
+This project has been developed in Python 3.6.0 and using Google Colab Notebooks. It has been implemented in PyTorch 0.4.1
