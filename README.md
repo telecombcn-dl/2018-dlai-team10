@@ -1,9 +1,9 @@
-# Deep Learning for Artifitial Intelligence (DLAI) Project
-Group 10: M. Alonso, M. Busquets, P. Palau, C. Pitarque
+# Deep Learning for Artifitial Intelligence Project - Group 10
+ETSETB Master students: M. Alonso, M. Busquets, P. Palau, C. Pitarque
 
-GitHub project page: [...]
+# 1. Introduction 
 
-# Quick, Draw! Doodle Recognition Challenge
+## 1.1 Quick, Draw! Doodle Recognition Challenge
 Our project consists on trying different approaches for *Kaggle's Quick, Draw! Doodle Recognition Challenge*.
 
 Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI [...]
@@ -12,16 +12,27 @@ However, since the training data comes from the game itself, drawings can be inc
 
 Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
 
+## 1.2  Objectives of the Project
 
 The main objective of this project was for us to deeply understand the concepts and implementations of various Deep Learning models studied in the course. [...]
 
+We have implemented three different models [...]
 
-# Models
+# 2. The Dataset
+
+
+# 3. Models
 We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
 
 For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
 
-# Results
+## 3.1 Multilayer Perceptron
+
+## 3.2 Convolutional Neural Network
+
+## 3.1 Recurrent Neutal Network
+
+# 4. Conclusions
 Results [...]
 
 The evaluation of the challenge is performed according to the Mean Average Precision @ 3 (MAP@3): MAP@3=1U∑u=1U∑k=1min(n,3)P(k)
@@ -30,5 +41,5 @@ where U is the number of scored drawings in the test data, P(k) is the precision
 The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge requested. 
 
 
-# Conclusions
+# References
 Conclusions [...]
