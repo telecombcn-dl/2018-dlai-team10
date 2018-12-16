@@ -89,15 +89,13 @@ I used different...
 
 The model that we are going to train is an LSTM (Long-Short Term Memory Network).
 
-First of all, we must consider the sizes of the tensors that the network is going to take as input. Recalling the previous information about the batch size and the batch padding explained in section 3, we have:
+First of all, we must consider the sizes of the tensors that the network is going to take as input. Our input are variable sized sequences with the following format: 
 
 Sequences of * x 2 , where * is the length of the sequence, which is variable, and 2 is given by the keypoints in the drawing, which have a range between (0, 0) and (255, 255).
 We pad this sequences with zeros according to the longest sequence length. Thus, we end with a batch of padded sequence that will have the size: LONGEST_LENGTH x BATCH_SIZE x 2
 Having explained the input to our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM in order to classify the extracted features coming from the LSTM hidden layer.
 
-![sequence_tesnsor](https://user-images.githubusercontent.com/29488113/50056186-09d23900-0159-11e9-8cee-5a812fa2b2b2.JPG)
-![input_bacth_tensor](https://user-images.githubusercontent.com/29488113/50056188-1060b080-0159-11e9-8675-c2264f17108c.jpg)
-![input_tensor_batch_padded](https://user-images.githubusercontent.com/29488113/50056189-1191dd80-0159-11e9-84a1-feeb0c977a9f.jpg)
+
 
 
 
