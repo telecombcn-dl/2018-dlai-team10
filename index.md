@@ -61,7 +61,27 @@ For the first two approaches (MLP and CNN) we used the simplified dataset, in wh
 
 ## 3.2 Convolutional Neural Network
 
-The optimizer blabla. We tried two different optimizers:
+Our motivation to tackle this problem of image classification using a CNN (Convolutional Neural Network) is quite obvious, because it is a specialized kind of neural network for processing data that has a known grid-like topology that leverages the ideas of local connectivity, parameter sharing and pooling/subsampling hidden units. 
+
+*The basic idea behind a CNN is that the network learns hierarchical representations  of the data with increasing levels of abstraciton. *
+
+We tried different shallow network architectures but the following deeper network resulted to be the best one in terms of performance.
+
+
+![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
+
+
+This final architecture, which will be followingly explained, consists basically on alternating 5 convolutional layers followed by a non-linearity with 2 max-pooling layers, ending with 3 fully connected layers also followed by non-linearity. 
+
+The **Convolutional Layers**  transform 3D input volume to a 3D output volume of neuron activations performing convolutions on a 2D grid. For the final architecture we have used 5 convolutional with a kernel size of 3x3 and of stride=1 each. They differ in the number of filters though, passing from 6 filters in the first layers to 16 and ending with 32 filters. These last characteristics (filter spatial extent, stride and number of filters) have been set as hyperparameters, which means that they their value is the one that has proven to give a better performance to the network after trying different ones. 
+
+The **Non-liniarity Layers** that we have used are ReLU (Rectified Linear Unit) Layers, which can be seen as simple range transforms that perform a simple pixel-based mapping that sets the negative values of the image to zero. 
+
+The network also contains two **Pooling Layers**, which are in charge of the down-sampling of the image and therefore reducing the number of activations, as well as providing invariance to small local changes. Four our architecture we have chosen to get the maximum values of 2x2 pixel rectangular regions around the input locations (that is, Max-Pooling with stride 2,2). It must be noted that we have just used two of this layer because the original size of our input data was already quite small (28x28 pixel images), so if we wanted a deep network, we could not afford adding pooling layers after each convolutional because we would have lost too much information about precise position of things. 
+
+The **Fully-connected Layers** are the classic layers in which every neuron in the previous layer is connected to every neuron in the next layer and activation is computed as matrix multiplication plus bias. Here, the output of the last convolutional layer is flattened to a single vector which is input to a fully connected layer. 
+
+At some point, we decided to introduce **Batch Normalization** Layer (normalize the activations of each channel by subbstracting the mean and dividing by the standard deviation), with the objective of simplifying, speeding up the training and reducing the sensitivity to network initialization. However, this approached resulted to give a worse performance than the one obtained without adding those layers, so we decided to remove them. 
 
 
 - **Stochastic Gradient Descent (SGD)**, which blabla
@@ -76,8 +96,6 @@ I used different...
 ### Architecture 2
 ![cnn model 3](https://user-images.githubusercontent.com/43316350/50045304-daf09000-0090-11e9-9cd8-61c0230a3f39.JPG)
 )
-### Architecture 3
-![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
 
 ![captura](https://user-images.githubusercontent.com/43316350/50052992-9535d500-012d-11e9-8f46-88ca463bbd49.JPG)
 
