@@ -7,7 +7,6 @@
   
       1.2 Quick, Draw! Doodle Recognition Challenge
       
-      1.3 Pipeline
   
 2. Dataset
 
@@ -42,11 +41,6 @@ However, since the training data comes from the game itself, drawings can be inc
 
 Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
 
-## 1.3  Pipeline
-
-The main objective of this project was for us to deeply understand the concepts and implementations of various Deep Learning models studied in the course. [...]
-
-We have implemented three different models [...]
 
 # 2. The Dataset
 
