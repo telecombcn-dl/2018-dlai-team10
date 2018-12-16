@@ -1,4 +1,4 @@
-# Deep Learning for Artifitial Intelligence Project 
+# Deep Learning for Artificial Intelligence Project 
 *Group 10: ETSETB Master students M. Alonso, M. Busquets, P. Palau and C. Pitarque*
 # Index
 1. Introduction
@@ -120,8 +120,11 @@ Luckily, PyTorch provides a solution which helps us feeding **zero-padded** mini
 
 ![batch_padded_edited](https://user-images.githubusercontent.com/29488113/50059278-271cfc80-0185-11e9-87f0-e88c1240e109.jpg)
 
+Having explained the input of our network, let us move on to the LSTM networks that we built. 
 
-Having explained the input of our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM unit in order to classify the extracted features coming from the LSTM hidden layer.
+### LSTM Models
+
+Since we are solving a classification problem, we will need a fully connected layer with softmax activation on top of the LSTM unit **in order to classify the extracted features coming from the LSTM hidden layer**. In this project, we built and trained 3 LSTM models, each one increasing the capacity of the previous one.
 
 
 
