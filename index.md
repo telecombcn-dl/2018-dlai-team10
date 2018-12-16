@@ -89,10 +89,25 @@ The current leader of the competition has a score of 0.95480. However, our resul
 
 # 5. Future Work
 
+Many different adaptations, tests, and experiments have been left for the future due to lack of time. Followingly, we will briefly define in which directions these future work strands should go:
+
+- **Time Optimization:** 
+
+- **Challenge Adaptation**:
+
+- **Deeper and enhanced analysis of the implemented models:** real-time losses and accuracy plots, computation of a confusion matrix...), new proposals to try different methods, or simply curiosity.
+
+- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
 
 # 6. References
+
 •	ADAM Optimizer:  D. P. Kingma, J. L. Ba, *'ADAM: A Method For Stochastic Optimization'*. 
+
 •	Training a classifier: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py 
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
 
 This project has been developed in Python 3.6.0 and using Google Colab Notebooks. It has been implemented in PyTorch 0.4.1
 
