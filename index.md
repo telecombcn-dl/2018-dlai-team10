@@ -58,6 +58,39 @@ For the first two approaches (MLP and CNN) we used the simplified dataset, in wh
 
 ## 3.1 Multilayer Perceptron
 
+To start, the first model to evaluate was a MLP (Multilayer Perceptron). It uses a supervised learning technique (backpropagation) to train a Neural Network. It can be distinguish from the liner perceptron because it uses multiple hidden layers:
+
+![mlp layer](https://user-images.githubusercontent.com/10107933/50059826-1a4fd700-018c-11e9-8cae-279a28b2a5ef.JPG)
+
+A ReLU Activation function and a Cross-Entropy Loss function have been used.
+
+![loss function](https://user-images.githubusercontent.com/10107933/50059922-75ce9480-018d-11e9-98ff-0d0d729c3380.JPG)
+
+
+A partciular MLP architectures have been evaluated to find the better performance. 
+
+![models table](https://user-images.githubusercontent.com/10107933/50060014-85021200-018e-11e9-95d4-7268a5ce88c3.JPG)
+
+First, we create a basic model with only three layers, and evaluate the dataset. Later on, we increase the complexity of the network trying to obtain a better performance.
+
+
+We collect all the results for a better comparison:
+
+![loss](https://user-images.githubusercontent.com/10107933/50060253-fa231680-0191-11e9-8718-8fcd8cc05ca7.JPG)
+
+
+![accuracy](https://user-images.githubusercontent.com/10107933/50060309-9cdb9500-0192-11e9-8dc6-4b7059623b0e.JPG)
+
+With this architectures, the best accuracy we obtained was 85.3% in the **Model 4**, however it could clearly be seen that the network was overfit.
+To prevent this, we decided to implement a loss regularization by adding a new parameter in the cross-entropy loss (weight_decay)
+
+![overfiting_formula](https://user-images.githubusercontent.com/10107933/50060387-7c600a80-0193-11e9-8955-5747c5705d66.JPG)
+
+The regularization does not provide the desired results, but it does improve the previous results a little bit
+
+![overfiting](https://user-images.githubusercontent.com/10107933/50060611-13c65d00-0196-11e9-87a6-331eb31168c0.JPG)
+
+
 ## 3.2 Convolutional Neural Network
 
 Our motivation to tackle this problem of image classification using a CNN (Convolutional Neural Network) is quite obvious, because it is a specialized kind of neural network for processing data that has a known grid-like topology that leverages the ideas of local connectivity, parameter sharing and pooling/subsampling hidden units. *The basic idea behind a CNN is that the network learns hierarchical representations of the data with increasing levels of abstraction.*
