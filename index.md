@@ -3,9 +3,11 @@
 # Index
 1. Introduction
 
-      1.1 Objectives of the Project
+      1.1 Project Outline
   
       1.2 Quick, Draw! Doodle Recognition Challenge
+      
+      1.3 Pipeline
   
 2. Dataset
 
@@ -25,6 +27,12 @@
 
 # 1. Introduction 
 
+## 1.1  Project Outline
+
+The main objective of this project was for us to deeply understand the concepts and implementations of various Deep Learning models studied in the course. [...]
+
+We have implemented three different models [...]
+
 ## 1.1 Quick, Draw! Doodle Recognition Challenge
 Our project consists on trying different approaches for *Kaggle's Quick, Draw! Doodle Recognition Challenge*.
 
@@ -34,7 +42,7 @@ However, since the training data comes from the game itself, drawings can be inc
 
 Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
 
-## 1.2  Objectives of the Project
+## 1.3  Pipeline
 
 The main objective of this project was for us to deeply understand the concepts and implementations of various Deep Learning models studied in the course. [...]
 
@@ -85,7 +93,7 @@ Results [...]
 The evaluation of the challenge is performed according to the Mean Average Precision @ 3 (MAP@3): MAP@3=1U∑u=1U∑k=1min(n,3)P(k)
 where U is the number of scored drawings in the test data, P(k) is the precision at cutoff k, and n is the number predictions per drawing.
 
-The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge requested. 
+The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge provided. 
 
 # 5. Future Work
 
@@ -93,9 +101,9 @@ Many different adaptations, tests, and experiments have been left for the future
 
 - **Time Optimization:** 
 
-- **Challenge Adaptation**:
+- **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
 
-- **Deeper and enhanced analysis of the implemented models:** real-time losses and accuracy plots, computation of a confusion matrix...), new proposals to try different methods, or simply curiosity.
+- **Deeper and enhanced analysis of the implemented models:** The Notebooks created could be enhanced by creating better tools to analyse the obtained results such as real-time losses and accuracy plots, computation of a confusion matrix and so on. 
 
 - **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
 
