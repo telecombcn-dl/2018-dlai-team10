@@ -85,41 +85,45 @@ I used different...
 
 ![loss accuracy_bones](https://user-images.githubusercontent.com/43316350/50053154-17bf9400-0130-11e9-96bd-fc6d5ef3294f.JPG)
 
-## 3.1 LSTM (Long-Short Memory Term)
+## 3.1 Recurrent Neutal Network
 
-The model that we are going to train is an LSTM (Long-Short Term Memory Network).
 
-First of all, we must consider the sizes of the tensors that the network is going to take as input. Recalling the previous information about the batch size and the batch padding explained in section 3, we have:
-
-Sequences of * x 2 , where * is the length of the sequence, which is variable, and 2 is given by the keypoints in the drawing, which have a range between (0, 0) and (255, 255).
-We pad this sequences with zeros according to the longest sequence length. Thus, we end with a batch of padded sequence that will have the size: LONGEST_LENGTH x BATCH_SIZE x 2
-Having explained the input to our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM in order to classify the extracted features coming from the LSTM hidden layer.
 
 # 4. Conclusions
-Results [...]
 
-The evaluation of the challenge is performed according to the Mean Average Precision @ 3 (MAP@3): MAP@3=1U∑u=1U∑k=1min(n,3)P(k)
-where U is the number of scored drawings in the test data, P(k) is the precision at cutoff k, and n is the number predictions per drawing.
+In this project, we have tackled for the first time a Deep Learning problem. We have created self-contained and detailed explainend notebooks, where all the pipeline characteristic of these kind of challenges is implemented **from scratch** (DL settings, data download and manipulation, architecture definition, training steps, validation and testing computation...). Each one of us has addressed the problem with a different approach, studying this way 3 different kinds of deep learning models as a team. We have faced typical deep learning problems such as overfitting, hyperparameter tuning and so on. 
 
-The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge provided. 
+As conclusions, we have found that the model that gives the best performance is the CNN (with an accuracy of 90%), while 
+
+
+
+To conclude with, we would like to highlight that we have learned a lot with this project. 
 
 # 5. Future Work
 
 Many different adaptations, tests, and experiments have been left for the future due to lack of time. Followingly, we will briefly define in which directions these future work strands should go:
 
-- **Time Optimization:** 
+- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarded every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud. 
 
-- **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
+- **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard - currently with a score of 0.95), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
 
 - **Deeper and enhanced analysis of the implemented models:** The Notebooks created could be enhanced by creating better tools to analyse the obtained results such as real-time losses and accuracy plots, computation of a confusion matrix and so on. 
 
-- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
+- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). ![attention](https://user-images.githubusercontent.com/43316350/50055928-92e77100-0155-11e9-9939-533159151bc3.JPG)
 
 # 6. References
 
 •	ADAM Optimizer:  D. P. Kingma, J. L. Ba, *'ADAM: A Method For Stochastic Optimization'*. 
 
 •	Training a classifier: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py 
+
+•	Understanding the effect of the Batch Normalization layers: https://papers.nips.cc/paper/7996-understanding-batch-normalization.pdf
+
+•	Understanding LSTM: http://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+•	Variable sized mini-batches: https://towardsdatascience.com/taming-lstms-variable-sized-mini-batches-and-why-pytorch-is-good-for-your-health-61d35642972e 
+
+•	Automatically load variable sized batches: https://discuss.pytorch.org/t/dataloader-for-various-length-of-data/6418/8
 
 
 
