@@ -1,5 +1,5 @@
 # Deep Learning for Artifitial Intelligence Project 
-*Group 10:* ETSETB Master students M. Alonso, M. Busquets, P. Palau and C. Pitarque
+*Group 10: ETSETB Master students M. Alonso, M. Busquets, P. Palau and C. Pitarque*
 # Index
 1. Introduction
 
@@ -74,6 +74,8 @@ I used different...
 ![captura](https://user-images.githubusercontent.com/43316350/50052992-9535d500-012d-11e9-8f46-88ca463bbd49.JPG)
 
 ## Experiments
+
+![loss accuracy_bones](https://user-images.githubusercontent.com/43316350/50053154-17bf9400-0130-11e9-96bd-fc6d5ef3294f.JPG)
 
 ## 3.1 Recurrent Neutal Network
 
