@@ -116,10 +116,12 @@ If we take a mini-batch of these sequences, we have a set of sequences of differ
 ![batch_without padding_edited](https://user-images.githubusercontent.com/29488113/50059096-baa0fe00-0182-11e9-9c43-3259137fe03c.jpg)
 
 Unfortunately, PyTorch can't work with batches of variable lengths. One option we could try is **working with a single sequence in each forward pass**, but that **is a bad idea because we will have a very poor gradient estimate and the training time would last forever**.
-However, PyTorch provides a solution which helps us feeding **zero-padded** mini-batches to our networks.
+Luckily, PyTorch provides a solution which helps us feeding **zero-padded** mini-batches to our networks. That means that we will have good gradient estimations, which means shorter training time and better accuracy. Using these solutions, we can use mini-batch optimization algorithms. We pad each sequence with zeros according to the longest sequence length. Thus, we end with a batch of padded sequences that will have the size: **LONGEST_LENGTH x BATCH_SIZE x 2**. Our batches will look like:
 
-We pad this sequences with zeros according to the longest sequence length. Thus, we end with a batch of padded sequence that will have the size: LONGEST_LENGTH x BATCH_SIZE x 2
-Having explained the input to our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM in order to classify the extracted features coming from the LSTM hidden layer.
+![batch_padded_edited](https://user-images.githubusercontent.com/29488113/50059278-271cfc80-0185-11e9-87f0-e88c1240e109.jpg)
+
+
+Having explained the input of our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM unit in order to classify the extracted features coming from the LSTM hidden layer.
 
 
 
