@@ -83,9 +83,13 @@ The network also contains two **Pooling Layers**, which are in charge of the dow
 The **Fully-connected Layers** are the classic layers in which every neuron in the previous layer is connected to every neuron in the next layer and activation is computed as matrix multiplication plus bias. Here, the output of the last convolutional layer is flattened to a single vector which is input to a fully connected layer.
 
 With this architecture, we obtained an accuracy on the test set of 89.4%, however in the training and validation plot of the losses and the accuracy, it could clearly be seen that the network was overfit.
+
 ![overfitting](https://user-images.githubusercontent.com/43316350/50059060-6b5acd80-0182-11e9-922b-3742113d2218.JPG)
+
 To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. The resulting total loss is the following. 
+
 ![loss](https://user-images.githubusercontent.com/43316350/50059425-ee7e2280-0186-11e9-8973-6bcbf4670a88.JPG) 
+
 Where *lambda* is the regularization hyperparameter (experimentally decided value).
 
 Using this technique, we were able to obtain an accuracy value on the test set of 91.2%, where although some overfitting occurs, it is not as relevant as before. The results were the following:
