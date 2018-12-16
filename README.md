@@ -1,5 +1,27 @@
-# Deep Learning for Artifitial Intelligence Project - *Group 10*
-ETSETB Master students: M. Alonso, M. Busquets, P. Palau, C. Pitarque
+# Deep Learning for Artifitial Intelligence Project 
+*Group 10:* ETSETB Master students M. Alonso, M. Busquets, P. Palau and C. Pitarque
+# Index
+1. Introduction
+
+      1.1 Objectives of the Project
+  
+      1.2 Quick, Draw! Doodle Recognition Challenge
+  
+2. Dataset
+
+3. Models
+
+      3.1 Multilayer Perceptron
+  
+      3.2 Convolutional Neural Network
+      
+      3.3 Long-Short Term Memory
+
+4. Conclusions
+
+5. Future Work
+
+6. References
 
 # 1. Introduction 
 
@@ -20,9 +42,17 @@ We have implemented three different models [...]
 
 # 2. The Dataset
 
-# 3. Hyperparameters
 
-## 3.1 Optimizers
+
+# 3. Models
+We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
+
+For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
+
+## 3.1 Multilayer Perceptron
+
+## 3.2 Convolutional Neural Network
+
 The optimizer blabla. We tried two different optimizers:
 
 
@@ -30,18 +60,6 @@ The optimizer blabla. We tried two different optimizers:
 
 
 - **Adaptive Moments (ADAM)**, which is an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. 
-
-
-# 4. Models
-We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
-
-For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
-
-## 4.1 Multilayer Perceptron
-
-## 4.2 Convolutional Neural Network
-
-
 
 ### Architecture 1
 I used different...
@@ -53,17 +71,21 @@ I used different...
 ### Architecture 3
 ![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
 
+![captura](https://user-images.githubusercontent.com/43316350/50052992-9535d500-012d-11e9-8f46-88ca463bbd49.JPG)
+
 ## Experiments
 
-## 4.1 Recurrent Neutal Network
+## 3.1 Recurrent Neutal Network
 
-# 5. Conclusions
+# 4. Conclusions
 Results [...]
 
 The evaluation of the challenge is performed according to the Mean Average Precision @ 3 (MAP@3): MAP@3=1U∑u=1U∑k=1min(n,3)P(k)
 where U is the number of scored drawings in the test data, P(k) is the precision at cutoff k, and n is the number predictions per drawing.
 
 The current leader of the competition has a score of 0.95480. However, our results can not be compared to this because we have not implemented our models neither used all the data that the challenge requested. 
+
+# 5. Future Work
 
 
 # 6. References
