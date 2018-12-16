@@ -85,7 +85,15 @@ I used different...
 
 ![loss accuracy_bones](https://user-images.githubusercontent.com/43316350/50053154-17bf9400-0130-11e9-96bd-fc6d5ef3294f.JPG)
 
-## 3.1 Recurrent Neutal Network
+## 3.1 LSTM (Long-Short Memory Term)
+
+The model that we are going to train is an LSTM (Long-Short Term Memory Network).
+
+First of all, we must consider the sizes of the tensors that the network is going to take as input. Recalling the previous information about the batch size and the batch padding explained in section 3, we have:
+
+Sequences of * x 2 , where * is the length of the sequence, which is variable, and 2 is given by the keypoints in the drawing, which have a range between (0, 0) and (255, 255).
+We pad this sequences with zeros according to the longest sequence length. Thus, we end with a batch of padded sequence that will have the size: LONGEST_LENGTH x BATCH_SIZE x 2
+Having explained the input to our network, we have to build our LSTM network. Since we are solving a classification problem, we will need a fully connected layer on top of the LSTM in order to classify the extracted features coming from the LSTM hidden layer.
 
 # 4. Conclusions
 Results [...]
