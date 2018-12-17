@@ -54,14 +54,15 @@ In our project, **we used this simplified versions of the data**. In addition, a
 ![clases](https://user-images.githubusercontent.com/43316350/50059288-43b93480-0185-11e9-8d9f-76695e781a8b.JPG) 
 
 The data formats that we used to train our models are the following ones:
-- **Grayscale 28x28 images** of the drawings
+
+- **Flat representations of the grayscale images** in vectors of length 28x28 = 784, which will be used for the first studied model (Multilayer Perceptron). 
+
+- **Grayscale 28x28 images** of the drawings, which will be used for the second model (Convolutional Neural Network).
 
 ![apple](https://user-images.githubusercontent.com/43316350/50060779-7f112e80-0198-11e9-903c-798806f9557e.JPG)
 
-- **Flat representations of the grayscale images** in vectors of length 28x28 = 784
-
 - **Sequences with the key pixels** (m, n) representing an object in the order they were drawn. For example, one sequence could be: 
-(63, 77), (103, 89), (148, 79), (204, 91), … This may seem just a sequence, but if we draw these points through the time we obtain a shape like:
+(63, 77), (103, 89), (148, 79), (204, 91), … which will be used for the third model (Long-Short Term Memory). This may seem just a sequence, but if we draw these points through the time we obtain a shape like:
 
 ![apple_only_points](https://user-images.githubusercontent.com/29488113/50060968-53dc0e80-019b-11e9-8865-5fd7859b7b4e.png)
 
@@ -79,14 +80,10 @@ We split our data into 3 different parts, training, validation and test.
 ![datapercentage](https://user-images.githubusercontent.com/43316350/50059472-8a0f9300-0187-11e9-8ef4-8173e1488041.JPG)
 
 
-
-
 # 4. Models
 We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
 
-For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
-
-## 4.1 Multilayer Perceptron
+## 4.1 MLP (Multilayer Perceptron)
 
 To start, the first model to evaluate was a MLP (Multilayer Perceptron). It uses a supervised learning technique (backpropagation) to train a Neural Network. It can be distinguish from the liner perceptron because it uses multiple hidden layers:
 
@@ -121,7 +118,7 @@ The regularization does not provide the desired results, but it does improve the
 ![overfiting](https://user-images.githubusercontent.com/10107933/50060611-13c65d00-0196-11e9-87a6-331eb31168c0.JPG)
 
 
-## 4.2 Convolutional Neural Network
+## 4.2 CNN (Convolutional Neural Network)
 
 Our motivation to tackle this problem of image classification using a CNN (Convolutional Neural Network) is quite obvious, because it is a specialized kind of neural network for processing data that has a known grid-like topology that leverages the ideas of local connectivity, parameter sharing and pooling/subsampling hidden units. *The basic idea behind a CNN is that the network learns hierarchical representations of the data with increasing levels of abstraction.*
 
@@ -199,11 +196,9 @@ Since we are solving a classification problem, we will need a fully connected la
 
 In this project, we have tackled for the first time a Deep Learning problem. We have created self-contained and detailed explainend notebooks, where all the pipeline characteristic of these kind of challenges is implemented **from scratch** (DL settings, data download and manipulation, architecture definition, training steps, validation and testing computation...). Each one of us has addressed the problem with a different approach, studying this way 3 different kinds of deep learning models as a team. We have faced typical deep learning problems such as overfitting, hyperparameter tuning and so on. 
 
-As conclusions, we have found that the model that gives the best performance is the CNN (with an accuracy of 90%), while 
+As conclusions, we have found that the model that gives the best performance is the CNN (with an accuracy of 90%), while the MLP and the LSTM have a very similar performance (accuracies of 85.4%). However, although the MLP is a simpler structure, the LSTM would perform better for the Quick, Draw! because as it has learned the temporal evolution of the data, it could perfom competitevely in real time. 
 
-
-
-To conclude with, we would like to highlight that we have learned a lot with this project. 
+To conclude with, we would like to highlight that we have learned a lot with this project. Most of us started the semester with zero previous knowledge of Deep Learning and a few months later we have been able to implement form scratch different DL architectures. So, although it has been more time consuming that what we expected it to be, it has been extremely gratifying to obtain appropiate results. This project has been very useful to understand and comprehend the main ideas behind all the theory explained in class. 
 
 # 6. Future Work
 
