@@ -44,7 +44,31 @@ Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
 
 # 2. The Dataset
 
+The dataset that we used is the [Quick, Draw!](https://www.kaggle.com/c/quickdraw-doodle-recognition) Dataset. This dataset is extracted from the Kaggle competition Quick Draw! Doodle Recognition Challenge.  
+
+This dataset contains drawing of multiple daily objects in **different formats**. This variety in the data was what caught our attention from the very first moment, since we could try different models considering every format of the input data.
+
+The format in which the drawings are provided is either an image with the final drawing or the drawn pixels ordered in time. In fact, Google, who is the creator of this dataset, also provided the simplified datasets, which are a simplified version of the images and simplified versions of the drawing sequences. 
+
+In our project, **we used this simplified versions of the data**. In addition, another simplification that we made was to drastically **reduce the number of classes**. Out of more than 300 classes that were in the original dataset, **we only retained 10** to simplify the classification problem. The selected classes are: 
+
+***Apple, Banana, Book, Fork, Key, Ladder, Pizza, Stop Sign, Tennis Racquet, Wheel***
+
 ![clases](https://user-images.githubusercontent.com/43316350/50059288-43b93480-0185-11e9-8d9f-76695e781a8b.JPG) 
+
+The data formats that we used to train our models are the following ones:
+- **Grayscale 28x28 images** of the drawings
+
+![apple](https://user-images.githubusercontent.com/43316350/50060779-7f112e80-0198-11e9-903c-798806f9557e.JPG)
+
+- **Flat representations of the grayscale images** in vectors of length 28x28 = 784
+
+- **Sequences with the key pixels** (m, n) representing an object in the order they were drawn. For example, one sequence could be: 
+(63, 77), (103, 89), (148, 79), (204, 91), … This may seem just a sequence, but if we draw these points through the time we obtain a shape like:
+
+![apple_only_points](https://user-images.githubusercontent.com/29488113/50060871-0f03a800-019a-11e9-87dd-1a9547fc4fb9.png)
+
+
 
 ![datapercentage](https://user-images.githubusercontent.com/43316350/50059472-8a0f9300-0187-11e9-8ef4-8173e1488041.JPG)
 
