@@ -126,15 +126,15 @@ We started creating the following basic CNN architecture and testing how it perf
 
 ![arquitecturacnn1](https://user-images.githubusercontent.com/43316350/50046296-bcdf5b80-00a1-11e9-8afe-7441718d35d3.JPG) 
 
-With the purpose of improving the performance of the CNN, we deepened the network, so the probability of finding a *bad* local minimum decreased. We came up with the following structure that resulted to be excellent in terms of performance. This final architecture, which will be followingly explained, consists basically on alternating 5 convolutional layers (followed by a non-linearity and a batch normalization layer) with 2 max-pooling layers and, ending with 3 fully connected layers also followed by non-linearity. 
+With the purpose of improving the performance of the CNN, we deepened the network, so the probability of finding a *bad* local minimum decreased. We came up with the following structure that resulted to be excellent in terms of performance. This final architecture, which will be followingly explained, consists basically on alternating 5 convolutional layers (followed by a non-linearity) with 2 max-pooling layers and, ending with 3 fully connected layers also followed by non-linearity. 
 
 ![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
 
+*In the first testing of the network, we did not implement the Batch Normalization Layers*
+
 The **Convolutional Layers** transform 3D input volume to a 3D output volume of neuron activations performing convolutions on a 2D grid. For the final architecture we have used 5 convolutional with a kernel size of 3x3 and of stride=1 each. They differ in the number of filters though, passing from 6 filters in the first layers to 16 and ending with 32 filters. These last characteristics (filter spatial extent, stride and number of filters) have been set as hyperparameters, which means that they their value is the one that has proven to give a better performance to the network after trying different ones. 
 
-The **Non-linearity Layers** that we have used are ReLU (Rectified Linear Unit) Layers, which can be seen as simple range transforms that perform a simple pixel-based mapping that sets the negative values of the image to zero. 
-
-We also introduced **Batch Normalization** layers (normalize the activations of each channel by subtracting the mean and dividing by the standard deviation), with the objective of simplifying, speeding up the training and reducing the sensitivity to network initialization. 
+The **Non-linearity Layers** that we have used are ReLU (Rectified Linear Unit) Layers, which can be seen as simple range transforms that perform a simple pixel-based mapping that sets the negative values of the image to zero.  
 
 The network also contains two **Pooling Layers**, which are in charge of the down-sampling of the image and therefore reducing the number of activations, as well as providing invariance to small local changes. Four our architecture we have chosen to get the maximum values of 2x2 pixel rectangular regions around the input locations (that is, Max-Pooling with stride 2,2). It must be noted that we have just used two of these layers because the original size of our input data was already quite small (28x28 pixel images), so if we wanted a deep network, we could not afford adding pooling layers after each convolutional because we would have lost too much information about precise position of things. 
 
@@ -149,9 +149,9 @@ With the previously defined architecture, after passing to the network mini-batc
 
 ![overfitting](https://user-images.githubusercontent.com/43316350/50059060-6b5acd80-0182-11e9-922b-3742113d2218.JPG)
 
-To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. 
+To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. However, we discovered that the network was still overfitted, so we decided to add another strategy. We added 5 **Batch Normalization** layers (normalize the activations of each channel by subtracting the mean and dividing by the standard deviation), with the objective of simplifying, speeding up the training and reducing the sensitivity to network initialization.
 
-Using this technique, we were able to obtain an accuracy value on the test set of 91.4%, where although some overfitting occurs, it is not as relevant as before. The results were the following:
+Using this technique, we were able to obtain an accuracy value on the test set of 91.4%, where although some overfitting occurs, it is not as relevant as before. So we demonstrated that the combination of weight decay and batch normalization improves regularization, accuracy and gives faster convergence. The results were the following:
 
 ![loss accuracy_nooverfit](https://user-images.githubusercontent.com/43316350/50059754-2c7d4580-018b-11e9-953b-1b9851d0d444.JPG) 
 
