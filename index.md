@@ -48,7 +48,7 @@ The dataset that we used is the [Quick, Draw!](https://www.kaggle.com/c/quickdra
 
 This dataset contains drawing of multiple daily objects in **different formats**. This variety in the data was what caught our attention from the very first moment, since we could try different models considering every format of the input data.
 
-The format in which the drawings are provided is either an image with the final drawing or the drawn pixels ordered in time. In fact, Google, who is the creator of this dataset, also provided the simplified datasets, which are a simplified version of the images and simplified versions of the drawing sequences. 
+The format in which the drawings are provided is either an image with the final drawing or the drawn pixels ordered in time. In fact, Google, who is the datset provider, also provided the simplified datasets, which are a simplified version of the images and simplified versions of the drawing sequences. 
 
 In our project, **we used this simplified versions of the data**. In addition, another simplification that we made was to drastically **reduce the number of classes**. Out of more than 300 classes that were in the original dataset, **we only retained 10** to simplify the classification problem. The selected classes are: 
 
@@ -212,13 +212,13 @@ To conclude with, we would like to highlight that we have learned a lot with thi
 
 Many different adaptations, tests, and experiments have been left for the future due to lack of time. Followingly, we will briefly define in which directions these future work strands should go:
 
-- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarded every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud. 
+- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarded every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud Compute Engine. 
 
 - **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard - currently with a score of 0.95), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
 
 - **Deeper and enhanced analysis of the implemented models:** The Notebooks created could be enhanced by creating better tools to analyse the obtained results such as real-time losses and accuracy plots, computation of a confusion matrix and so on. 
 
-- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). ![attention](https://user-images.githubusercontent.com/43316350/50055928-92e77100-0155-11e9-9939-533159151bc3.JPG)
+- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
 
 # 6. References
 
