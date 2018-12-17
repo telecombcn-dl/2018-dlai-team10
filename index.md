@@ -4,7 +4,7 @@
 
 1. Introduction
   
-2 Quick, Draw! Doodle Recognition Challenge
+2. Quick, Draw! Doodle Recognition Challenge
       
 3. Dataset
 
