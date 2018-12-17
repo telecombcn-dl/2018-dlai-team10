@@ -66,9 +66,18 @@ The data formats that we used to train our models are the following ones:
 - **Sequences with the key pixels** (m, n) representing an object in the order they were drawn. For example, one sequence could be: 
 (63, 77), (103, 89), (148, 79), (204, 91), … This may seem just a sequence, but if we draw these points through the time we obtain a shape like:
 
-![apple_only_points](https://user-images.githubusercontent.com/29488113/50060871-0f03a800-019a-11e9-87dd-1a9547fc4fb9.png)
+![apple_only_points](https://user-images.githubusercontent.com/29488113/50060968-53dc0e80-019b-11e9-8865-5fd7859b7b4e.png)
 
+## NOISY DATA 
+Since this dataset was created by gathering drawings from people, there are few drawings that are very noisy and do not represent the object class. We show an example of what is supposed to be a tennis racquet:
 
+![noisydata](https://user-images.githubusercontent.com/43316350/50060771-5be67f00-0198-11e9-97ff-4678e758dab2.JPG)
+
+Moreover, the drawings can be incomplete, resulting in a more challenging classification task.
+
+## Data organization
+
+We split our data into 3 different parts, training, validation and test.
 
 ![datapercentage](https://user-images.githubusercontent.com/43316350/50059472-8a0f9300-0187-11e9-8ef4-8173e1488041.JPG)
 
