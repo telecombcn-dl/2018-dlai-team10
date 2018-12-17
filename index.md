@@ -188,9 +188,42 @@ Having explained the input of our network, let us move on to the LSTM networks t
 
 Since we are solving a classification problem, we will need a fully connected layer with softmax activation on top of the LSTM unit **in order to classify the extracted features coming from the LSTM hidden layer**. In this project, we built and trained 3 LSTM models, each one increasing the capacity of the previous one.
 
+#### MODEL 1
 
+The first model that we trained is an LSTM with 1 LSTM unit with hidden size 128. On top of this LSTM unit we introduced a Linear layer to classify in 10 classes the features extracted by the LSTM unit. The structure of the model1 is the following:
 
+![model1](https://user-images.githubusercontent.com/29488113/50062448-9dcaf180-01a7-11e9-8c65-d5f2d726ea40.jpg)
 
+The results for this model were not very promising, in fact, we had to build another model because this one only achieved a validation accuracy of less than 60%...
+
+![model0_results](https://user-images.githubusercontent.com/29488113/50062497-c0f5a100-01a7-11e9-8fa9-852853a0e9af.png)
+
+#### MODEL 2
+The second model that we trained has the following architecture: 2 Stacked LSTM units with hidden size 512 with a linear layer on top.
+
+![model3_diagram](https://user-images.githubusercontent.com/29488113/50062531-e682aa80-01a7-11e9-867d-369c59559c67.jpg)
+
+The results associated with this model are:
+
+![model3_results](https://user-images.githubusercontent.com/29488113/50062567-0c0fb400-01a8-11e9-9d9a-0e096cf0f19c.png)
+
+Although this model reached a high validation accuracy in comparison with model1, we decided to push even more the capacity of the last model that we built, the model3.
+
+### MODEL 3
+
+The final LSTM Network has the following structure: 3 stacked LSTM units with hidden size = 512 and one linear layer on top. 
+
+![model_5_diagram](https://user-images.githubusercontent.com/29488113/50062704-e8993900-01a8-11e9-9ff3-f18abdaf5832.jpg)
+
+The results obtained with this model are:
+
+![model5_results](https://user-images.githubusercontent.com/29488113/50062656-935d2780-01a8-11e9-96f0-65c7cb9e7fb6.png)
+
+This model achieved good performance on both the training and validation set, and we considered that was the top model among all the LSTM models we trained. Consequently, we did early-stopping to know what weights to load for inference and we decided to take the weights of the epoch 50. Below is the previous graph zoomed in order to see detailedly the epoch from where we took the models.
+
+![model5_results_zoomed](https://user-images.githubusercontent.com/29488113/50062718-f9e24580-01a8-11e9-9f4a-329b4422a396.JPG)
+
+Finally, we evaluated the model3 in the test set and it **achieved an accuracy of 85.4% on the TEST SET**. We are very happy with the performance of this model because at the beginning of the project we did not expect it to train at all.
 
 # 5. Conclusions
 
@@ -210,7 +243,7 @@ Many different adaptations, tests, and experiments have been left for the future
 
 - **Deeper and enhanced analysis of the implemented models:** The Notebooks created could be enhanced by creating better tools to analyse the obtained results such as real-time losses and accuracy plots, computation of a confusion matrix and so on. 
 
-- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
+- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder. Analyze how the features extracted by each model differ from the others.  
 
 # 7. References
 
