@@ -69,7 +69,7 @@ The data formats that we used to train our models are the following ones:
 ![apple_only_points](https://user-images.githubusercontent.com/29488113/50060968-53dc0e80-019b-11e9-8865-5fd7859b7b4e.png)
 
 ## NOISY DATA 
-Since this dataset was created by gathering drawings from people, there are few drawings that are very noisy and do not represent the object class. We show an example of what is supposed to be a tennis racquet:
+Since this dataset was created by gathering drawings from people in an unsupervised way, there are few drawings that are very noisy and do not represent the object class. We show an example of what is supposed to be a tennis racquet:
 
 ![noisydata](https://user-images.githubusercontent.com/43316350/50060771-5be67f00-0198-11e9-97ff-4678e758dab2.JPG)
 
