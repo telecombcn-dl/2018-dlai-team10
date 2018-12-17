@@ -129,9 +129,13 @@ The regularization does not provide the desired results, but it does improve the
 Our motivation to tackle this problem of image classification using a CNN (Convolutional Neural Network) is quite obvious, because it is a specialized kind of neural network for processing data that has a known grid-like topology that leverages the ideas of local connectivity, parameter sharing and pooling/subsampling hidden units. *The basic idea behind a CNN is that the network learns hierarchical representations of the data with increasing levels of abstraction.*
 
 We started creating the following basic CNN architecture and testing how it performed but, as it was very shallow it gave very poor results. In fact, most of the times it got stuck very soon in a local minimum, so the results were awful. 
+
 ![arquitecturacnn1](https://user-images.githubusercontent.com/43316350/50046296-bcdf5b80-00a1-11e9-8afe-7441718d35d3.JPG) 
+
 With the purpose of improving the performance of the CNN, we deepened the network, so the probability of finding a *bad* local minimum decreased. We came up with the following structure that resulted to be excellent in terms of performance. This final architecture, which will be followingly explained, consists basically on alternating 5 convolutional layers (followed by a non-linearity and a batch normalization layer) with 2 max-pooling layers and, ending with 3 fully connected layers also followed by non-linearity. 
+
 ![arquitecturacnn3](https://user-images.githubusercontent.com/43316350/50046302-c963b400-00a1-11e9-90e4-769db06d6ec9.JPG)
+
 The **Convolutional Layers** transform 3D input volume to a 3D output volume of neuron activations performing convolutions on a 2D grid. For the final architecture we have used 5 convolutional with a kernel size of 3x3 and of stride=1 each. They differ in the number of filters though, passing from 6 filters in the first layers to 16 and ending with 32 filters. These last characteristics (filter spatial extent, stride and number of filters) have been set as hyperparameters, which means that they their value is the one that has proven to give a better performance to the network after trying different ones. 
 
 The **Non-linearity Layers** that we have used are ReLU (Rectified Linear Unit) Layers, which can be seen as simple range transforms that perform a simple pixel-based mapping that sets the negative values of the image to zero. 
@@ -142,17 +146,29 @@ The network also contains two **Pooling Layers**, which are in charge of the dow
 
 The **Fully-connected Layers** are the classic layers in which every neuron in the previous layer is connected to every neuron in the next layer and activation is computed as matrix multiplication plus bias. Here, the output of the last convolutional layer is flattened to a single vector which is input to a fully connected layer.
 
-With this architecture, we obtained an accuracy on the test set of 89.4%, however in the training and validation plot of the losses and the accuracy, it could clearly be seen that the network was overfit.
+In order to be able to measure the computational complexity of our model, we calculated the total number of parameters of the network, which resulted to be  202.634. We can see that the majority of the parameters come from the fully connected layers, and that the resulting number is quite large. However, we consider that the good performance of this network is worth this computational complexity. 
+Hereby is the detailed computation of the total number of parameters. 
+
+![parameters](https://user-images.githubusercontent.com/43316350/50060631-630c8d80-0196-11e9-842f-2718396c877b.JPG) 
+
+With the previously defined architecture, after passing to the network mini-batches of test data and comparing their results with the ground truth, we obtained an accuracy on the test set of 89.4%. However, in the training and validation plot of the losses and the accuracy, it could clearly be seen that the network was overfit.
 
 ![overfitting](https://user-images.githubusercontent.com/43316350/50059060-6b5acd80-0182-11e9-922b-3742113d2218.JPG)
 
-To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. The resulting total loss is the following. 
+To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. 
 
-![loss](https://user-images.githubusercontent.com/43316350/50059425-ee7e2280-0186-11e9-8973-6bcbf4670a88.JPG) 
+Using this technique, we were able to obtain an accuracy value on the test set of 91.4%, where although some overfitting occurs, it is not as relevant as before. The results were the following:
 
-Where *lambda* is the regularization hyperparameter (experimentally decided value).
+![loss accuracy_nooverfit](https://user-images.githubusercontent.com/43316350/50059754-2c7d4580-018b-11e9-953b-1b9851d0d444.JPG) 
 
-Using this technique, we were able to obtain an accuracy value on the test set of 91.2%, where although some overfitting occurs, it is not as relevant as before. The results were the following:
+We must mention that to obtain these results we have used as optimizer the **Adaptive Moments (ADAM)**, which is an algorithm for first-order gradient-based optimization of stochastic objective functions, based on adaptive estimates of lower-order moments. The method is straightforward to implement, is computationally efficient, has little memory requirements, is invariant to diagonal rescaling of the gradients, and is well suited for problems that are large in terms of data and/or parameters. We also tried to use SGD (Stochastic Gradient Descent) but it got stuck most of the times in local minimum, giving very poor results.
+
+Additionally, to see how well the network performs on different categories, we created a plot that shows the accuracy for each class. It can be noted that classes that were very similar (wheel and pizza for example) have lower accuracy than the others, while very different and clear objects such as apple, have a very high accuracy.
+
+![acc by class](https://user-images.githubusercontent.com/43316350/50059736-dad4bb00-018a-11e9-9efe-e7da5539a4ca.JPG) 
+
+Note that in the notebook corresponding to the CNN, some interesting little demos (and in some cases validation steps) can be performed, such as randomly visualizing an image corresponding to the training set of images of the selected class or at the end of the notebook, we can see how the network performs for a random image of the last batch of the test set. An exciting experiment to do is to first try to classify the image by ourselves and then looking to the predicted class and the ground truth value to see if the network performed better than a human...
+
 
 
 ## 3.3 LSTM (Long-Short Term Memory)
