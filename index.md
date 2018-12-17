@@ -32,11 +32,11 @@ Having said that, the technical goal of our project is to implement **from scrat
 
 The idea and the dataset of our project is extracted from [Quick, Draw! Doodle Recognition Challenge](https://www.kaggle.com/c/quickdraw-doodle-recognition).
 
-Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI tries to guess what is being drawn. Sometimes it fails because the user does not know the concept he has to draw, or he/she is not able to complete it on time or just because the AI has not generalized well. Nonetheless, it is amazing how acccurate it is!
+Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI tries to guess what is being drawn. Sometimes it fails because the user does not know the concept he has to draw, or he/she is not able to complete it on time or just because the AI has not generalized well. Nonetheless, it is amazing how accurate it is!
 
-All the drawings of all the users of the game are stored by Google, so a nice enormous dataset is available for this competition. However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this **very noisy data** and perform well on a manually-labeled test set from a different distribution.
+All the drawings of all the users of the game are stored by Google, so a nice enormous dataset is available for this competition. However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this **very noisy data** and perform well on a manually-labelled test set from a different distribution.
 
-It is important to note that our goal never was to reach a competitive position in the leaderboard of the competition (*we wish we could, as the prize is of 25.000$)*, but to learn. Therefore, we did not follow strictly the competition indications (we just used a few classes, we used a different result measuring than the proposed...). 
+It is important to note that our goal never was to reach a competitive position in the leader board of the competition (*we wish we could, as the prize is of 25.000$)*, but to learn. Therefore, we did not follow strictly the competition indications (we just used a few classes, we used a different result measuring than the proposed...). 
 
 
 # 3. The Dataset
@@ -45,9 +45,9 @@ The dataset that we used is the [Quick, Draw!](https://www.kaggle.com/c/quickdra
 
 This dataset contains drawing of multiple daily objects in **different formats**. This variety in the data was what caught our attention from the very first moment, since we could try different models considering every format of the input data.
 
-The format in which the drawings are provided is either an image with the final drawing or the drawn pixels ordered in time. In fact, Google, who is the datset provider, also provided the simplified datasets, which are a simplified version of the images and simplified versions of the drawing sequences. 
+The format in which the drawings are provided is either an image with the final drawing or the drawn pixels ordered in time. In fact, Google, who is the dataset provider, also provided the simplified datasets, which are a simplified version of the images and simplified versions of the drawing sequences. 
 
-In our project, **we used this simplified versions of the data**. In addition, another simplification that we made was to drastically **reduce the number of classes**. Out of more than 300 classes that were in the original dataset, **we only retained 10** to simplify the classification problem. The selected classes are: 
+In our project, **we used these simplified versions of the data**. In addition, another simplification that we made was to drastically **reduce the number of classes**. Out of more than 300 classes that were in the original dataset, **we only retained 10** to simplify the classification problem. The selected classes are: 
 
 ***Apple, Banana, Book, Fork, Key, Ladder, Pizza, Stop Sign, Tennis Racquet, Wheel***
 
@@ -62,7 +62,7 @@ The data formats that we used to train our models are the following ones:
 ![apple](https://user-images.githubusercontent.com/43316350/50060779-7f112e80-0198-11e9-903c-798806f9557e.JPG)
 
 - **Sequences with the key pixels** (m, n) representing an object in the order they were drawn. For example, one sequence could be: 
-(63, 77), (103, 89), (148, 79), (204, 91), … which will be used for the third model (Long-Short Term Memory). This may seem just a sequence, but if we draw these points through the time we obtain a shape like:
+(63, 77), (103, 89), (148, 79), (204, 91), … which will be used for the third model (Long-Short Term Memory). This may seem just a sequence, but if we draw these points through the time, we obtain a shape like:
 
 ![apple_only_points](https://user-images.githubusercontent.com/29488113/50060968-53dc0e80-019b-11e9-8865-5fd7859b7b4e.png)
 
@@ -81,11 +81,11 @@ We split our data into 3 different parts, training, validation and test.
 
 
 # 4. Models
-We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
+We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN). 
 
 ## 4.1 MLP (Multilayer Perceptron)
 
-To start, the first model to evaluate was a MLP (Multilayer Perceptron). It uses a supervised learning technique (backpropagation) to train a Neural Network. It can be distinguish from the liner perceptron because it uses multiple hidden layers:
+To start, the first model to evaluate was a MLP (Multilayer Perceptron). It uses a supervised learning technique (backpropagation) to train a Neural Network. It can be distinguished from the liner perceptron because it uses multiple hidden layers:
 
 ![mlp layer](https://user-images.githubusercontent.com/10107933/50059826-1a4fd700-018c-11e9-8cae-279a28b2a5ef.JPG)
 
@@ -94,7 +94,7 @@ A ReLU Activation function and a Cross-Entropy Loss function have been used.
 ![loss function](https://user-images.githubusercontent.com/10107933/50059922-75ce9480-018d-11e9-98ff-0d0d729c3380.JPG)
 
 
-A partciular MLP architectures have been evaluated to find the better performance. 
+A particular MLP architectures have been evaluated to find the better performance. 
 
 ![models table](https://user-images.githubusercontent.com/10107933/50060014-85021200-018e-11e9-95d4-7268a5ce88c3.JPG)
 
@@ -108,7 +108,7 @@ We collect all the results for a better comparison:
 
 ![accuracy](https://user-images.githubusercontent.com/10107933/50060309-9cdb9500-0192-11e9-8dc6-4b7059623b0e.JPG)
 
-With this architectures, the best accuracy we obtained was 85.3% in the **Model 4**, however it could clearly be seen that the network was overfit.
+With these architectures, the best accuracy we obtained was 85.3% in the **Model 4**, however it could clearly be seen that the network was overfit.
 To prevent this, we decided to implement a loss regularization by adding a new parameter in the cross-entropy loss (weight_decay)
 
 ![overfiting_formula](https://user-images.githubusercontent.com/10107933/50060387-7c600a80-0193-11e9-8955-5747c5705d66.JPG)
@@ -151,7 +151,7 @@ With the previously defined architecture, after passing to the network mini-batc
 
 To prevent this overfitting, we decided to implement **loss regularization**, though we could have used many other techniques such as early stopping, dropout, or data augmentation among others. We decided to add the L2 Regularization (or weight decay) to our cross-entropy loss. The L2 penalizes the complexity of the classifier by measuring the number of zeros in the weight vector. However, we discovered that the network was still overfitted, so we decided to add another strategy. We added 5 **Batch Normalization** layers (normalize the activations of each channel by subtracting the mean and dividing by the standard deviation), with the objective of simplifying, speeding up the training and reducing the sensitivity to network initialization.
 
-Using this technique, we were able to obtain an accuracy value on the test set of 91.4%, where although some overfitting occurs, it is not as relevant as before. So we demonstrated that the combination of weight decay and batch normalization improves regularization, accuracy and gives faster convergence. The results were the following:
+Using this technique, we were able to obtain an accuracy value on the test set of 91.4%, where although some overfitting occurs, it is not as relevant as before. So, we demonstrated that the combination of weight decay and batch normalization improves regularization, accuracy and gives faster convergence. The results were the following:
 
 ![loss accuracy_nooverfit](https://user-images.githubusercontent.com/43316350/50059754-2c7d4580-018b-11e9-953b-1b9851d0d444.JPG) 
 
@@ -169,7 +169,7 @@ Note that in the notebook corresponding to the CNN, some interesting little demo
 
 The model that we are going to train is an LSTM (Long-Short Term Memory Network). We selected this kind of model because we wanted to exploit the temporal information contained in the data.
 
-First of all, we must consider the sizes of the tensors that the network is going to take as input. Our input are variable sized sequences with the format **L x 2**, where L is the length of the sequence, which is variable, and 2 is given by the keypoints in the drawing, which have a range between (0, 0) and (255, 255). We can represent the tensor for each sequence in a drawing:
+First of all, we must consider the sizes of the tensors that the network is going to take as input. Our input are variable sized sequences with the format **L x 2**, where L is the length of the sequence, which is variable, and 2 is given by the key points in the drawing, which have a range between (0, 0) and (255, 255). We can represent the tensor for each sequence in a drawing:
 
 ![just_one_sequence_edited](https://user-images.githubusercontent.com/29488113/50059015-9395fc80-0181-11e9-8384-e37877491e28.jpg)
 
@@ -186,7 +186,7 @@ Having explained the input of our network, let us move on to the LSTM networks t
 
 ### LSTM Models
 
-Since we are solving a classification problem, we will need a fully connected layer with softmax activation on top of the LSTM unit **in order to classify the extracted features coming from the LSTM hidden layer**. In this project, we built and trained 3 LSTM models, each one increasing the capacity of the previous one.
+Since we are solving a classification problem, we will need a fully connected layer with SoftMax activation on top of the LSTM unit **in order to classify the extracted features coming from the LSTM hidden layer**. In this project, we built and trained 3 LSTM models, each one increasing the capacity of the previous one.
 
 #### MODEL 1
 
@@ -219,7 +219,7 @@ The results obtained with this model are:
 
 ![model5_results](https://user-images.githubusercontent.com/29488113/50062656-935d2780-01a8-11e9-96f0-65c7cb9e7fb6.png)
 
-This model achieved good performance on both the training and validation set, and we considered that was the top model among all the LSTM models we trained. Consequently, we did early-stopping to know what weights to load for inference and we decided to take the weights of the epoch 50. Below is the previous graph zoomed in order to see detailedly the epoch from where we took the models.
+This model achieved good performance on both the training and validation set, and we considered that was the top model among all the LSTM models we trained. Consequently, we did early-stopping to know what weights to load for inference and we decided to take the weights of the epoch 50. Below is the previous graph zoomed in order to see detailed the epoch from where we took the models.
 
 ![model5_results_zoomed](https://user-images.githubusercontent.com/29488113/50062718-f9e24580-01a8-11e9-9f4a-329b4422a396.JPG)
 
@@ -227,25 +227,27 @@ Finally, we evaluated the model3 in the test set and it **achieved an accuracy o
 
 # 5. Conclusions
 
-In this project, we have tackled for the first time a Deep Learning problem. We have created self-contained and detailed explainend notebooks, where all the pipeline characteristic of these kind of challenges is implemented **from scratch** (DL settings, data download and manipulation, architecture definition, training steps, validation and testing computation...). Each one of us has addressed the problem with a different approach, studying this way 3 different kinds of deep learning models as a team. We have faced typical deep learning problems such as overfitting, hyperparameter tuning and so on. 
+In this project, we have tackled for the first time a Deep Learning problem. We have created self-contained and detailed explained notebooks, where all the pipeline characteristic of these kind of challenges is implemented **from scratch** (DL settings, data download and manipulation, architecture definition, training steps, validation and testing computation...). Each one of us has addressed the problem with a different approach, studying this way 3 different kinds of deep learning models as a team. We have faced typical deep learning problems such as overfitting, hyperparameter tuning and so on. 
 
-As conclusions, we have found that the model that gives the best performance is the CNN (with an accuracy of 90%), while the MLP and the LSTM have a very similar performance (accuracies of 85.4%). However, although the MLP is a simpler structure, the LSTM would perform better for the Quick, Draw! because as it has learned the temporal evolution of the data, it could perfom competitevely in real time. 
+As conclusions, we have found that the model that gives the best performance is the CNN (with an accuracy of 90%), while the MLP and the LSTM have a very similar performance (accuracies of 85.4%). However, although the MLP is a simpler structure, the LSTM would perform better for the Quick, Draw! because as it has learned the temporal evolution of the data, it could perform competitively in real time. 
 
-To conclude with, we would like to highlight that we have learned a lot with this project. Most of us started the semester with zero previous knowledge of Deep Learning and a few months later we have been able to implement form scratch different DL architectures. So, although it has been more time consuming that what we expected it to be, it has been extremely gratifying to obtain appropiate results. This project has been very useful to understand and comprehend the main ideas behind all the theory explained in class. 
+To conclude with, we would like to highlight that we have learned a lot with this project. Most of us started the semester with zero previous knowledge of Deep Learning and a few months later we have been able to implement form scratch different DL architectures. So, although it has been more time consuming that what we expected it to be, it has been extremely gratifying to obtain appropriate results. This project has been very useful to understand and comprehend the main ideas behind all the theory explained in class. 
 
 # 6. Future Work
 
 Many different adaptations, tests, and experiments have been left for the future due to lack of time. Followingly, we will briefly define in which directions these future work strands should go:
 
-- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarted every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud Compute Engine. 
+- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarted every 12h and then all progress is lost. Additionally, very often, for unknown reasons the framework suddenly disconnected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud Compute Engine. 
 
-- **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard - currently with a score of 0.95), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
+- **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leader board - currently with a score of 0.95), many things should be changed. To begin with, the evaluation metric should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
 
 - **Deeper and enhanced analysis of the implemented models:** The Notebooks created could be enhanced by creating better tools to analyse the obtained results such as real-time losses and accuracy plots, computation of a confusion matrix and so on. 
 
-- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder. Analyze how the features extracted by each model differ from the others.  
+- **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder. Analyse how the features extracted by each model differ from the others.  
 
 # 7. References
+
+•	**Deep Learning Course Lectures.**.
 
 •	ADAM Optimizer:  D. P. Kingma, J. L. Ba, *'ADAM: A Method For Stochastic Optimization'*. 
 
@@ -265,4 +267,4 @@ Many different adaptations, tests, and experiments have been left for the future
 
 This project has been developed in Python 3.6.0 and using Google Colab Notebooks. It has been implemented in PyTorch 0.4.1
 
-![logos](https://user-images.githubusercontent.com/43316350/50045436-ee9cf600-0092-11e9-8bdd-5f78347ec975.JPG) 
+![logos](https://user-images.githubusercontent.com/43316350/50045436-ee9cf600-0092-11e9-8bdd-5f78347ec975.JPG)
