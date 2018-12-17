@@ -1,48 +1,45 @@
 # Deep Learning for Artificial Intelligence Project 
 *Group 10: ETSETB Master students M. Alonso, M. Busquets, P. Palau and C. Pitarque*
 # Index
+
 1. Introduction
-
-      1.1 Project Outline
   
-      1.2 Quick, Draw! Doodle Recognition Challenge
+2 Quick, Draw! Doodle Recognition Challenge
       
-  
-2. Dataset
+3. Dataset
 
-3. Models
+4. Models
 
-      3.1 Multilayer Perceptron
+      4.1 Multilayer Perceptron
   
-      3.2 Convolutional Neural Network
+      4.2 Convolutional Neural Network
       
-      3.3 Long-Short Term Memory
+      4.3 Long-Short Term Memory
 
-4. Conclusions
+5. Conclusions
 
-5. Future Work
+6. Future Work
 
-6. References
+7. References
 
 # 1. Introduction 
 
-## 1.1  Project Outline
+We conceived this project as a way to deeply understand the concepts and implementations of various Deep Learning models studied in the course, for the majority of us are new to this fascinating world of Deep Learning. Towards this goal, we have resolved a classification task that has allowed us to comprehend and perform all the steps of the pipeline of a Deep Learning project. 
 
-The main objective of this project was for us to deeply understand the concepts and implementations of various Deep Learning models studied in the course. [...]
+Having said that, the technical goal of our project is to implement **from scratch** three different Deep Learning architectures of increasing difficulty (Multilayer Perceptron, Convolutional Neural Network and Long-Short Term Memory) that tackled in a different way a classification problem extracted from an ongoing Kaggle competition, and create for each model a self-contained and detailed Notebook that alternates text with code. 
 
-We have implemented three different models [...]
+# 2. Quick, Draw! Doodle Recognition Challenge
 
-## 1.1 Quick, Draw! Doodle Recognition Challenge
-Our project consists on trying different approaches for *Kaggle's Quick, Draw! Doodle Recognition Challenge*.
+The idea and the dataset of our project is extracted from [Quick, Draw! Doodle Recognition Challenge](https://www.kaggle.com/c/quickdraw-doodle-recognition).
 
-Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI [...]
+Quick, Draw! is a game that was created in 2016 to educate the public in a playful way about how AI works. The basic idea of the game is that it tells the player a simple concept (such as banana, apple...) and he/she has to draw it in a certain amount of time. While the player is drawing, the AI tries to guess what is being drawn. Sometimes it fails because the user does not know the concept he has to draw, or he/she is not able to complete it on time or just because the AI has not generalized well. Nonetheless, it is amazing how acccurate it is!
 
-However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this **very noisy data** and perform well on a manually-labeled test set from a different distribution.
+All the drawings of all the users of the game are stored by Google, so a nice enormous dataset is available for this competition. However, since the training data comes from the game itself, drawings can be incomplete or may not match the label. The challenge consists on building a recognizer that can effectively learn from this **very noisy data** and perform well on a manually-labeled test set from a different distribution.
 
-Competition link: https://www.kaggle.com/c/quickdraw-doodle-recognition
+It is important to note that our goal never was to reach a competitive position in the leaderboard of the competition (*we wish we could, as the prize is of 25.000$)*, but to learn. Therefore, we did not follow strictly the competition indications (we just used a few classes, we used a different result measuring than the proposed...). 
 
 
-# 2. The Dataset
+# 3. The Dataset
 
 The dataset that we used is the [Quick, Draw!](https://www.kaggle.com/c/quickdraw-doodle-recognition) Dataset. This dataset is extracted from the Kaggle competition Quick Draw! Doodle Recognition Challenge.  
 
@@ -84,12 +81,12 @@ We split our data into 3 different parts, training, validation and test.
 
 
 
-# 3. Models
+# 4. Models
 We decided to evaluate three different approaches of increasing difficulty and performance: a Multilayer Perceptron (MLP), a Convolutional Neural Network (CNN) and a Recurrent Nerual Network (RNN). 
 
 For the first two approaches (MLP and CNN) we used the simplified dataset, in which the simplified drawings have been rendered into a 28x28 grayscale bitmap in numpy .npy format. While for the RNN, [...]
 
-## 3.1 Multilayer Perceptron
+## 4.1 Multilayer Perceptron
 
 To start, the first model to evaluate was a MLP (Multilayer Perceptron). It uses a supervised learning technique (backpropagation) to train a Neural Network. It can be distinguish from the liner perceptron because it uses multiple hidden layers:
 
@@ -124,7 +121,7 @@ The regularization does not provide the desired results, but it does improve the
 ![overfiting](https://user-images.githubusercontent.com/10107933/50060611-13c65d00-0196-11e9-87a6-331eb31168c0.JPG)
 
 
-## 3.2 Convolutional Neural Network
+## 4.2 Convolutional Neural Network
 
 Our motivation to tackle this problem of image classification using a CNN (Convolutional Neural Network) is quite obvious, because it is a specialized kind of neural network for processing data that has a known grid-like topology that leverages the ideas of local connectivity, parameter sharing and pooling/subsampling hidden units. *The basic idea behind a CNN is that the network learns hierarchical representations of the data with increasing levels of abstraction.*
 
@@ -171,7 +168,7 @@ Note that in the notebook corresponding to the CNN, some interesting little demo
 
 
 
-## 3.3 LSTM (Long-Short Term Memory)
+## 4.3 LSTM (Long-Short Term Memory)
 
 The model that we are going to train is an LSTM (Long-Short Term Memory Network). We selected this kind of model because we wanted to exploit the temporal information contained in the data.
 
@@ -198,7 +195,7 @@ Since we are solving a classification problem, we will need a fully connected la
 
 
 
-# 4. Conclusions
+# 5. Conclusions
 
 In this project, we have tackled for the first time a Deep Learning problem. We have created self-contained and detailed explainend notebooks, where all the pipeline characteristic of these kind of challenges is implemented **from scratch** (DL settings, data download and manipulation, architecture definition, training steps, validation and testing computation...). Each one of us has addressed the problem with a different approach, studying this way 3 different kinds of deep learning models as a team. We have faced typical deep learning problems such as overfitting, hyperparameter tuning and so on. 
 
@@ -208,11 +205,11 @@ As conclusions, we have found that the model that gives the best performance is 
 
 To conclude with, we would like to highlight that we have learned a lot with this project. 
 
-# 5. Future Work
+# 6. Future Work
 
 Many different adaptations, tests, and experiments have been left for the future due to lack of time. Followingly, we will briefly define in which directions these future work strands should go:
 
-- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarded every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud Compute Engine. 
+- **Time Optimization:** Although it has been a very helpful tool, during the implementation of this project, we have wasted a lot of time with Google Colab, due to the fact that execution times are restarted every 12h and then all progress is lost. Additionaly, very often, for unknown reasons the framework suddently disconected and we had to start over (set again the notebook, download the data, restructure it...). If we were to continue with this project, the first thing we would do would be to migrate all the content to Google Cloud Compute Engine. 
 
 - **Challenge Adaptation**: If in the future it was intended to compete in the Kaggle competition (or just to compare the results with the competition's leaderboard - currently with a score of 0.95), many things should be changed. To begin with, the evaluation metrich should be changed to the Mean Average Precision at 3 (which is the one the competition performs) instead of the general accuracy. Furthermore, all the data provided by the competition should be used instead of a reduced version of just 10 of the more than 300 classes available. Moreover, we assume that to obtain competitive results, other models and architectures should also be considered.  
 
@@ -220,7 +217,7 @@ Many different adaptations, tests, and experiments have been left for the future
 
 - **Extracted features thorough study:** Deep analysis of how the format of the input data affects the extracted features of each model implementing an encoder/decoder (PONÇ). 
 
-# 6. References
+# 7. References
 
 •	ADAM Optimizer:  D. P. Kingma, J. L. Ba, *'ADAM: A Method For Stochastic Optimization'*. 
 
